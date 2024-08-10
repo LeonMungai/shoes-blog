@@ -1,18 +1,21 @@
-import React from "react";
+import { useParams } from "react-router-dom";
 import "./ArticleDetail.css";
+import mockData from "../../data/articles.json";
 
 export const ArticleDetail = () => {
-  return (
-    <div className="ArticleDetail-container">
-      <img
-        src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=200&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8bmlrZSUyMGFmMXxlbnwwfHwwfHx8MA%3D%3D"
-        alt=""
-      />
-      <h1 className="ArticleDetail-title">AirForce1</h1>
-      <p className="ArticleDetail-description">
-        This shoe offers flexibility and can be rocked with any outfit
-      </p>
+  const { slug } = useParams();
+  const data = JSON.parse(JSON.stringify(mockData));
+  const article = data.find((article) => article.slug === slug);
 
+  return (
+    <div className="container">
+      <div className="card">
+        <img src={article.image} alt={article.slug} />
+        <div className="body">
+          <h2 className="title">{article.title}</h2>
+          <p className="description">{article.content}</p>
+        </div>
+      </div>
     </div>
   );
 };

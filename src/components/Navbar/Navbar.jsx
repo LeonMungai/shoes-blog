@@ -1,30 +1,41 @@
-import React from "react";
 import "./Navbar.css";
-import { House } from "lucide-react";
-import { Link } from "react-router-dom";
+import { LucideHouse } from "lucide-react";
+import { Link, NavLink } from "react-router-dom";
+import { APP_ROUTES } from "../../constants";
 
 const Navbar = () => (
-  <div className="top left">
-    <nav>
-    <i class="fab fa-facebook-square"></i>
-    <i class="fab fa-twitter-square"></i>
-    <i class="fab fa-pinterest-square"></i>
-    <i class="fab fa-youtube-square"></i>
+  <nav>
+    <div className="top-navbar">
+      <a target="_blank" href="https://facebook.com">
+        <i className="fab fa-facebook-square "></i>
+      </a>
+      <a target="_blank" href="https://facebook.com">
+        <i className="fab fa-twitter-square"></i>
+      </a>
+      <a target="_blank" href="https://facebook.com">
+        <i className="fab fa-pinterest-square"></i>
+      </a>
+      <a target="_blank" href="https://facebook.com">
+        <i className="fab fa-youtube-square"></i>
+      </a>
+    </div>
+
+    <div className="navigation-menu">
+      <Link to={APP_ROUTES.HOME}>
+        <div className="logo">
+          <LucideHouse />
+        </div>
+      </Link>
       <ul>
         <li>
-          <Link to="/">
-            <House />
-          </Link>
+          <NavLink to={APP_ROUTES.HOME}>Home</NavLink>
         </li>
         <li>
-          <Link to="/card">ArticleCard</Link>
-        </li>
-        <li>
-          <Link to="/about">ArticleDetail</Link>
+          <NavLink to={APP_ROUTES.CONTACT}>Contact US</NavLink>
         </li>
       </ul>
-    </nav>
-  </div>
+    </div>
+  </nav>
 );
 
 export default Navbar;
